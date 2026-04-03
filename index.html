@@ -20,6 +20,7 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { overflow-x: hidden; }
 
   body {
     background: var(--ink);
@@ -29,6 +30,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
   }
 
   body::before {
@@ -132,6 +134,7 @@
     color: var(--text-dim);
     line-height: 1.5;
     font-weight: 400;
+    word-break: break-word;
   }
 
   .card-badge {
