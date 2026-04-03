@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shodan Eksamen — IOGKF Denmark</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700&family=Rajdhani:wght@300;400;600;700&display=swap');
+
+  :root {
+    --ink: #0a0a0a;
+    --red: #c0392b;
+    --red-light: #e74c3c;
+    --gold: #d4a017;
+    --grey: #1a1a1a;
+    --grey2: #2c2c2c;
+    --grey3: #3d3d3d;
+    --text: #e8e0d0;
+    --text-dim: #8a8070;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--ink);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(192,57,43,0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 70%, rgba(192,57,43,0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .landing {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    width: 100%;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .kanji {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 56px;
+    color: var(--red);
+    letter-spacing: 12px;
+    opacity: 0.85;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    color: var(--text-dim);
+    opacity: 0.6;
+    margin-bottom: 48px;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    display: block;
+    background: var(--grey);
+    border: 1px solid var(--grey2);
+    border-radius: 12px;
+    padding: 28px 24px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.25s ease;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .card:hover::before { transform: scaleX(1); }
+  .card:hover {
+    border-color: var(--red);
+    background: var(--grey2);
+    transform: translateY(-2px);
+  }
+
+  .card-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 600;
+  }
+
+  .card-arrow {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: var(--text-dim);
+    font-size: 18px;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .card:hover .card-arrow { transform: translateX(4px); color: var(--red); }
+
+  .countdown {
+    font-size: 12px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+    opacity: 0.5;
+  }
+  .countdown strong {
+    color: var(--gold);
+    font-weight: 700;
+    opacity: 1;
+  }
+
+  .footer {
+    margin-top: 32px;
+    font-size: 10px;
+    color: var(--text-dim);
+    opacity: 0.4;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="landing">
+
+  <span class="kanji">剛柔流</span>
+  <div class="title">Shodan Eksamen</div>
+  <div class="subtitle">IOGKF Denmark &middot; Goju-Ryu Karate-Do</div>
+
+  <div class="cards">
+
+    <a href="shodan.html" class="card">
+      <span class="card-badge">STUDER</span>
+      <span class="card-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </span>
+      <div class="card-title">Studer & Quiz</div>
+      <div class="card-desc">Gennemga alle emner, ov med quiz, og brug flashcards. Inkluderer kilder fra KD-80 og Shodan-pensum.</div>
+      <span class="card-arrow">&rarr;</span>
+    </a>
+
+    <a href="dan.html" class="card">
+      <span class="card-badge">TEST</span>
+      <span class="card-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </span>
+      <div class="card-title">Fuld Test</div>
+      <div class="card-desc">Alle 51 eksamenssporgsmal i et. Fejlede sporgsmal samles op til gentagelse. Vaelg alle, kun teknik, eller kun historie.</div>
+      <span class="card-arrow">&rarr;</span>
+    </a>
+
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="footer">Baseret pa officielt Shodan-pensum &middot; KD-80 Karatehistorien</div>
+
+</div>
+
+<script>
+  // Countdown to April 8
+  function updateCountdown() {
+    const exam = new Date('2026-04-08T00:00:00');
+    const now = new Date();
+    const diff = exam - now;
+    const el = document.getElementById('countdown');
+    if (diff <= 0) {
+      el.innerHTML = '<strong>EKSAMEN I DAG</strong> &mdash; OSU!';
+    } else {
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      if (days === 0) {
+        el.innerHTML = '<strong>' + hours + ' timer</strong> til eksamen';
+      } else {
+        el.innerHTML = '<strong>' + days + ' dag' + (days !== 1 ? 'e' : '') + '</strong> til eksamen';
+      }
+    }
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+</script>
+
+</body>
+</html>
