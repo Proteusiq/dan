@@ -25,18 +25,31 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { overflow-x: hidden; }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
   body {
     background: var(--ink);
     color: var(--text);
     font-family: 'Rajdhani', sans-serif;
     min-height: 100vh;
-    overflow-x: hidden;
+    min-height: -webkit-fill-available;
     -webkit-text-size-adjust: 100%;
+    width: 100%;
   }
 
-  .app { max-width: 660px; margin: 0 auto; padding: 24px 16px 80px; width: 100%; overflow-x: hidden; }
+  .app {
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 24px 16px 80px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
 
   .back-link {
     display: inline-block;
@@ -65,10 +78,11 @@
   }
   .header-title {
     font-size: 13px;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-dim);
     font-weight: 300;
+    overflow-wrap: break-word;
   }
 
   /* START SCREEN */
@@ -368,6 +382,7 @@
   .answer-text {
     font-size: 14px;
     line-height: 1.6;
+    word-break: break-word;
   }
   .your-answer .answer-text { color: var(--text-dim); }
   .perfect-answer .answer-text { color: #74c69d; }
@@ -414,6 +429,8 @@
     padding: 10px 0;
     border-bottom: 1px solid var(--grey2);
     font-size: 14px;
+    gap: 8px;
+    min-width: 0;
   }
   .breakdown-row:last-child { border-bottom: none; }
   .breakdown-score { color: var(--text-dim); font-size: 13px; }
@@ -481,8 +498,9 @@
   .screen.active { display: block; animation: fadeIn 0.25s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-  @media (max-width: 400px) {
+  @media (max-width: 480px) {
     .header-kanji { font-size: 28px; letter-spacing: 4px; }
+    .header-title { letter-spacing: 2px; font-size: 12px; }
     .start-card { padding: 24px 16px; }
     .start-modes { flex-direction: column; }
     .mode-btn { width: 100%; text-align: center; }
@@ -491,7 +509,11 @@
     .breakdown { padding: 12px 14px; }
     .failed-item { flex-direction: column; gap: 4px; }
     .failed-section { align-self: flex-start; }
+    .failed-box { padding: 12px 14px; }
     .mark-row { flex-direction: column; }
+    .reading-box { padding: 12px 14px; }
+    .opt-btn { padding: 12px 14px; font-size: 13px; }
+    .feedback-text { font-size: 14px; }
   }
 
   ::-webkit-scrollbar { width: 4px; }
@@ -502,7 +524,7 @@
 <body>
 
 <!-- PASSWORD GATE -->
-<div id="auth-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px">
+<div id="auth-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:-webkit-fill-available;padding:24px;width:100%;max-width:100%">
   <div style="text-align:center;max-width:340px;width:100%">
     <div style="font-family:'Noto Serif JP',serif;font-size:42px;color:var(--red);letter-spacing:8px;opacity:0.85;margin-bottom:16px">初段</div>
     <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-bottom:32px">Adgangskode paakraevet</div>

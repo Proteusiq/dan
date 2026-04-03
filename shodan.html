@@ -23,15 +23,20 @@
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { overflow-x: hidden; }
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
 
   body {
     background: var(--ink);
     color: var(--text);
     font-family: 'Rajdhani', sans-serif;
     min-height: 100vh;
-    overflow-x: hidden;
+    min-height: -webkit-fill-available;
     -webkit-text-size-adjust: 100%;
+    width: 100%;
   }
 
   body::before {
@@ -45,7 +50,17 @@
     z-index: 0;
   }
 
-  .app { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; padding: 0 16px 80px; width: 100%; overflow-x: hidden; }
+  .app {
+    position: relative;
+    z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 16px 80px;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
 
   .header {
     text-align: center;
@@ -64,16 +79,18 @@
   }
   .header-title {
     font-size: 13px;
-    letter-spacing: 4px;
+    letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--text-dim);
     font-weight: 300;
+    overflow-wrap: break-word;
   }
   .header-sub {
     font-size: 11px;
     color: var(--text-dim);
     margin-top: 8px;
     opacity: 0.7;
+    padding: 0 8px;
   }
 
   .progress-bar {
@@ -391,6 +408,7 @@
     gap: 12px;
     justify-content: center;
     margin-bottom: 24px;
+    flex-wrap: wrap;
   }
   .result-stat {
     background: var(--grey);
@@ -435,6 +453,7 @@
     gap: 6px;
     flex-wrap: wrap;
     margin-bottom: 16px;
+    max-width: 100%;
   }
   .fc-filter {
     padding: 6px 12px;
@@ -538,8 +557,9 @@
   }
   .back-link:hover { color: var(--red); }
 
-  @media (max-width: 400px) {
+  @media (max-width: 480px) {
     .header-kanji { font-size: 32px; letter-spacing: 4px; }
+    .header-title { letter-spacing: 2px; font-size: 12px; }
     .category-grid { grid-template-columns: 1fr; }
     .quiz-filter-grid { grid-template-columns: 1fr; }
     .fc-face { padding: 16px; }
@@ -547,6 +567,9 @@
     .fc-answer { font-size: 15px; }
     .result-stat { padding: 10px 14px; }
     .results-detail { gap: 8px; }
+    .nav-btn { font-size: 12px; letter-spacing: 1px; padding: 10px 4px; }
+    .quiz-question-card { padding: 16px; }
+    .explanation-box { padding: 14px; }
   }
 
   ::-webkit-scrollbar { width: 4px; }
@@ -557,7 +580,7 @@
 <body>
 
 <!-- PASSWORD GATE -->
-<div id="auth-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px">
+<div id="auth-gate" style="display:flex;align-items:center;justify-content:center;min-height:100vh;min-height:-webkit-fill-available;padding:24px;width:100%;max-width:100%">
   <div style="text-align:center;max-width:340px;width:100%">
     <div style="font-family:'Noto Serif JP',serif;font-size:42px;color:var(--red);letter-spacing:8px;opacity:0.85;margin-bottom:16px">剛柔流</div>
     <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text-dim);margin-bottom:32px">Adgangskode paakraevet</div>
